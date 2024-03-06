@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 50px;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Welcome to the Admin Panel!</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Upload Excel Sheets</h5>
+                        <p class="card-text">Upload Excel sheets for data processing.</p>
+                        <form action="/upload" method="post" enctype="multipart/form-data">
+                            <input type="file" name="excelFile" accept=".xlsx, .xls" class="form-control-file">
+                            <button type="submit" class="btn btn-primary mt-2">Upload Sheets</button>
+                        </form>
+                    </div>
+                </div>
+            </div>        
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Enter Registration Number</h5>
+                        <p class="card-text">Update grades by entering registration numbers.</p>
+                        <form action="/update_grades" method="post">
+                            <div class="form-group">
+                                <label for="registrationNumber">Registration Number:</label>
+                                <input type="text" class="form-control" id="registrationNumber" name="registrationNumber" placeholder="Enter registration number">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Grades</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">View Results</h5>
+                        <p class="card-text">View and manage student results.</p>
+                        <a href="#" class="btn btn-primary">View Results</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

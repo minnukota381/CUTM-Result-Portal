@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.container {
+    margin-top: 50px;
+}
+.table-container {
+    overflow-x: auto;
+}
+.table thead th {
+    font-weight: bold;
+}
+.table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+header {
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1); 
+}
+footer {
+    margin-top: 50px;
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    width: 100%;
+    bottom: 0;
+}
+button {
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  button.instagram:hover {
+    background: linear-gradient(
+      45deg,
+      #405de6,
+      #5851db,
+      #833ab4,
+      #c13584,
+      #e1306c,
+      #fd1d1d,
+      #f56040,
+      #f77737,
+      #fcaf45,
+      #ffdc80
+    );
+    color: aliceblue;
+  }
+  button.linkedin:hover {
+    background: #0f69b3;
+    color: #ffffff;
+  }
+  button.facebook:hover {
+    background: #405de6;
+    color: #ffff;
+  }
+  button.github:hover {
+    background-color: #000;
+    color: #ffff;
+  }
+  button.x:hover {
+    background-color: black;
+    fill: #ffffff;
+  }
+  button.youtube:hover {
+    background-color: #fd1d1d;
+    color: #ffffff;
+  }
+  .navbar-nav .nav-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}        
+.navbar-nav .nav-link:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+.navbar-toggler .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: black;
+    margin-bottom: 4px;
+}
+.navbar-toggler .icon-bar:last-child {
+    margin-bottom: 0;
+}
+  @media (max-width: 768px) {
+    .table {
+      font-size: 11.5px;
+      }
+      .social a {
+        margin: 0;
+        width: 30px;
+        height: 30px;
+        line-height: 30px
+      }
+      .social a svg {
+        width: 20px;
+        height: 20px
+      }
+      .navbar-nav .nav-link {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }        
+    .navbar-nav .nav-link:hover {
+        background-color: #f8f9fa;
+        color: #007bff;
+    }
+    .navbar-toggler .icon-bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: black;
+        margin-bottom: 4px;
+    }
+    .navbar-toggler .icon-bar:last-child {
+        margin-bottom: 0;
+    }
+   .Result{
+    text-align: center;
+   }
+  }
