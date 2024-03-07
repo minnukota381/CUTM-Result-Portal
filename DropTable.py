@@ -4,7 +4,6 @@ def list_tables():
     conn = sqlite3.connect('database.db')
     cur = conn.cursor()
 
-    # Fetch all table names from the database
     cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
     tables = cur.fetchall()
 
@@ -17,13 +16,11 @@ def delete_table(table_name):
     conn = sqlite3.connect('database.db')
     cur = conn.cursor()
 
-    # Check if the table exists
     cur.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
     result = cur.fetchone()
     if result is None:
         print(f"The table \"{table_name}\" does not exist.")
     else:
-        # Table exists, so drop it
         drop_table_query = f"DROP TABLE IF EXISTS \"{table_name}\";"
         cur.execute(drop_table_query)
         conn.commit()
