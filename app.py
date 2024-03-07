@@ -43,7 +43,6 @@ def calculate_sgpa(result):
     sgpa = total_weighted_grades / total_credits if total_credits != 0 else 0  
     return sgpa, total_credits
 
-# Function to calculate CGPA
 def calculate_cgpa(registration, name):
     conn = sqlite3.connect('database.db')
     cur = conn.cursor()
