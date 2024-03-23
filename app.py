@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, redirect, jsonify
-import sqlite3
 import os
+import sqlite3
 from dotenv import load_dotenv
+from pymongo import MongoClient
+from datetime import datetime
+
 
 load_dotenv()
 
@@ -9,6 +12,14 @@ app = Flask(__name__)
 
 ADMIN_USERNAME = os.getenv('ADMIN_USERNAME')
 ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
+
+MONGO_URI = os.getenv('MONGO_URI')
+
+client = MongoClient(MONGO_URI)
+
+db = client.get_database('mydatabase')
+
+collection = db.get_collection('mycollection')
 
 def convert_grade_to_integer(grade):
     grade_mapping = {
@@ -113,6 +124,21 @@ def home():
             cgpa = calculate_cgpa(registration, name)
             conn.close()
 
+            current_time = datetime.now()
+
+            client = MongoClient(MONGO_URI)
+            db = client.get_database('cutm_users')
+            collection = db.get_collection('cutm_userinput')
+
+            data = {
+                'name': name,
+                'registration': registration,
+                'semester': semester,
+                'timestamp': current_time
+            }
+
+            collection.insert_one(data)
+
             return render_template('display.html', result=result, count=count, sgpa=sgpa, total_credits=total_credits, cgpa=cgpa, message=message, selected_semester=semester, semesters=semesters)
 
         return render_template('index.html', semesters=semesters)
@@ -162,3 +188,4 @@ if __name__ == '__main__':
     conn.close()
 
     app.run(port=5000, host="0.0.0.0", debug=True)
+
