@@ -127,14 +127,13 @@ def home():
             current_time = datetime.now()
 
             client = MongoClient(MONGO_URI)
-            db = client.get_database('cutm_users')
-            collection = db.get_collection('cutm_userinput')
+            db = client.get_database('cutm')
+            collection = db.get_collection('userInput')
 
             data = {
-                'name': name,
                 'registration': registration,
                 'semester': semester,
-                'timestamp': current_time
+                'time': current_time
             }
 
             collection.insert_one(data)
