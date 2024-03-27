@@ -4,7 +4,7 @@ import sqlite3
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from datetime import datetime
-
+import pytz
 
 load_dotenv()
 
@@ -20,6 +20,13 @@ client = MongoClient(MONGO_URI)
 db = client.get_database('mydatabase')
 
 collection = db.get_collection('mycollection')
+
+def convert_to_ist(gmt_time):
+    ist_timezone = pytz.timezone('Asia/Kolkata')  # Define IST timezone
+    gmt_time = gmt_time.replace(tzinfo=pytz.utc)  # Set input time as UTC time
+    ist_time = gmt_time.astimezone(ist_timezone)  # Convert UTC time to IST
+    formatted_time = ist_time.strftime('%Y-%m-%d %I:%M:%S %p IST')  # Format time as desired
+    return formatted_time
 
 def convert_grade_to_integer(grade):
     grade_mapping = {
@@ -124,7 +131,8 @@ def home():
             cgpa = calculate_cgpa(registration, name)
             conn.close()
 
-            current_time = datetime.now()
+            current_time_utc = datetime.utcnow()
+            current_time_ist = convert_to_ist(current_time_utc)
 
             client = MongoClient(MONGO_URI)
             db = client.get_database('cutm')
@@ -133,7 +141,7 @@ def home():
             data = {
                 'registration': registration,
                 'semester': semester,
-                'time': current_time
+                'time': current_time_ist
             }
 
             collection.insert_one(data)
@@ -187,4 +195,3 @@ if __name__ == '__main__':
     conn.close()
 
     app.run(port=5000, host="0.0.0.0", debug=True)
-
