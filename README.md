@@ -2,6 +2,8 @@
 
 The CUTM Result Portal is a web application designed to help students and administrators view and manage academic results efficiently. This repository contains the codebase for the portal, including frontend templates, backend logic, and database configurations.
 
+[Live](https://cutm-result-portal.onrender.com/)
+
 ## Features
 
 - **Student Result Display**: Students can view their academic results by entering their registration number and selecting the semester.
@@ -12,10 +14,21 @@ The CUTM Result Portal is a web application designed to help students and admini
 
 ## Technologies Used
 
-- **Frontend**: HTML, CSS, Bootstrap, JavaScript
-- **Backend**: Python (Flask framework)
-- **Database**: SQLite (can be easily replaced with other databases like MySQL, PostgreSQL)
-- **Deployment**: The application can be deployed on any web server that supports Python and SQLite.
+### Backend
+
+- **Flask**: Python web framework used for building the backend of the application.
+- **SQLite**: SQL database engine used for storing and managing relational data.
+- **MongoDB**: NoSQL document-oriented database used for storing user input data.
+- **dotenv**: Python library for parsing environment variables from a .env file.
+- **PyMongo**: Python driver for working with MongoDB.
+- **Datetime**: Python module for working with dates and times.
+- **Jinja**: Templating engine for Python used for generating dynamic HTML content.
+
+### Frontend
+
+- **HTML/CSS**: Used for frontend structure and styling.
+- **Bootstrap 5**: Frontend framework for designing responsive and mobile-first web pages.
+- **JavaScript**: Programming language for adding interactivity to web pages.
 
 ## Supported Batches
 
@@ -96,4 +109,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Authors
 
-- [@Minnu Madan Kota](https://github.com/minnukota381)
+- [Minnu Madan Kota](https://github.com/minnukota381)
