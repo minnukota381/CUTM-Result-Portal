@@ -22,10 +22,10 @@ db = client.get_database('mydatabase')
 collection = db.get_collection('mycollection')
 
 def convert_to_ist(gmt_time):
-    ist_timezone = pytz.timezone('Asia/Kolkata')  # Define IST timezone
-    gmt_time = gmt_time.replace(tzinfo=pytz.utc)  # Set input time as UTC time
-    ist_time = gmt_time.astimezone(ist_timezone)  # Convert UTC time to IST
-    formatted_time = ist_time.strftime('%Y-%m-%d %I:%M:%S %p IST')  # Format time as desired
+    ist_timezone = pytz.timezone('Asia/Kolkata')  
+    gmt_time = gmt_time.replace(tzinfo=pytz.utc)  
+    ist_time = gmt_time.astimezone(ist_timezone)  
+    formatted_time = ist_time.strftime('%Y-%m-%d %I:%M:%S %p IST')  
     return formatted_time
 
 def convert_grade_to_integer(grade):
