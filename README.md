@@ -2,7 +2,7 @@
 
 The CUTM Result Portal is a web application designed to help students and administrators view and manage academic results efficiently. This repository contains the codebase for the portal, including frontend templates, backend logic, and database configurations.
 
-[Live](https://cutm-result-portal.onrender.com/)
+[**Live Demo**](https://cutm-result-portal.onrender.com/)
 
 ## Features
 
