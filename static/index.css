@@ -1,17 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body{
     font-family: "Poppins", sans-serif;
 }
+
 .container {
     margin-top: 30px;
 }
+
+.navbar-brand img {
+  height: 90px;
+}
+
 footer {
     margin-top: 50px;
     text-align: center;
 }
+
+.card {
+    border-radius: 25px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.288);
+    border: none;
+}
+   
+.btn-primary {
+    border-radius: 30px;
+    width: 50%;
+    background-color: #003c7c;
+    border-color: #002a56;
+    color: #fff;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #003268;
+    border-color: #00336a;
+}
+
 header {
     box-shadow: 0px 2px 4px rgba(0,0,0,0.1); 
 }
+
 button {
     border: none;
     border-radius: 50%;
@@ -68,7 +100,7 @@ button.youtube:hover {
 }        
 .navbar-nav .nav-link:hover {
     background-color: #f8f9fa;
-    color: #007bff;
+    color: #002f61;
 }
 .navbar-toggler .icon-bar {
     display: block;
@@ -79,4 +111,8 @@ button.youtube:hover {
 }
 .navbar-toggler .icon-bar:last-child {
     margin-bottom: 0;
+}
+h1 {
+    font-weight: 700;
+    color: #002f61;
 }
