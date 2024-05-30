@@ -54,6 +54,7 @@ button {
     margin-right: 5px;
     cursor: pointer;
 }
+
 button.instagram:hover {
     background: linear-gradient(
         45deg,
@@ -70,26 +71,32 @@ button.instagram:hover {
 );
     color: aliceblue;
 }
+
 button.linkedin:hover {
     background: #0f69b3;
     color: #ffffff;
 }
+
 button.facebook:hover {
     background: #405de6;
     color: #ffff;
 }
+
 button.github:hover {
     background-color: #000;
     color: #ffff;
 }
+
 button.x:hover {
     background-color: black;
     fill: #ffffff;
 }
+
 button.youtube:hover {
     background-color: #fd1d1d;
     color: #ffffff;
-}        
+}
+
 .navbar-nav .nav-link {
     font-size: 18px;
     font-weight: bold;
@@ -98,11 +105,13 @@ button.youtube:hover {
     margin-right: 10px;
     border-radius: 20px;
     transition: all 0.3s ease;
-}        
+}
+
 .navbar-nav .nav-link:hover {
     background-color: #f8f9fa;
     color: #002f61;
 }
+
 .navbar-toggler .icon-bar {
     display: block;
     width: 22px;
@@ -110,9 +119,11 @@ button.youtube:hover {
     background-color: black;
     margin-bottom: 4px;
 }
+
 .navbar-toggler .icon-bar:last-child {
     margin-bottom: 0;
 }
+
 h1 {
     font-weight: 700;
     color: #002f61;
