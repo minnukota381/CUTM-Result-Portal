@@ -5,12 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CUTM Result Portal</title>
     <link rel="icon" type="image/x-icon" href="/static/favhome.png">
+    
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="CUTM Result Portal" />
+    <meta property="og:description" content="Access your CUTM results quickly and easily on the CUTM Result Portal." />
+    <meta property="og:image" content="{{ url_for('static', filename='favhome.png') }}" />
+    <meta property="og:url" content="https://cutm-result-portal.onrender.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Meta Tags (optional) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CUTM Result Portal" />
+    <meta name="twitter:description" content="Access your CUTM results quickly and easily on the CUTM Result Portal." />
+    <meta name="twitter:image" content="{{ url_for('static', filename='favhome.png') }}" />
 </head>
 <body>
     <header>
