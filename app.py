@@ -17,8 +17,6 @@ MONGO_URI = os.getenv('MONGO_URI')
 
 client = MongoClient(MONGO_URI)
 
-# db = client.get_database('mydatabase')
-# collection = db.get_collection('mycollection')
 
 def convert_to_ist(gmt_time):
     ist_timezone = pytz.timezone('Asia/Kolkata')  
