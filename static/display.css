@@ -24,7 +24,7 @@ footer {
     margin-top: 50px;
     text-align: center;
     background-color: #f8f9fa;
-    padding: 20px 0;
+    padding: 0px;
     width: 100%;
     bottom: 0;
 }
@@ -98,16 +98,6 @@ button.instagram:hover {
   .table {
     font-size: 11.5px;
     }
-  .social a {
-    margin: 0;
-    width: 30px;
-    height: 30px;
-    line-height: 30px
-  }
-  .social a svg {
-    width: 20px;
-    height: 20px
-  }
   .navbar-nav .nav-link {
     font-size: 18px;
     font-weight: bold;
