@@ -39,39 +39,32 @@ button {
     cursor: pointer;
 }
 
-button.instagram:hover {
-    background: linear-gradient(
-      45deg,
-      #405de6,
-      #5851db,
-      #833ab4,
-      #c13584,
-      #e1306c,
-      #fd1d1d,
-      #f56040,
-      #f77737,
-      #fcaf45,
-      #ffdc80
-    );
-    color: aliceblue;
+button i {
+  font-size: 24px;
 }
 
-button.linkedin:hover {
-    background: #0f69b3;
-    color: #ffffff;
+button:hover {
+  transform: translateZ(3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 button.github:hover {
-    background-color: #000;
-    color: #ffff;
+  color:#fff;
+  background-color: #000000;
 }
-button.x:hover {
-    background-color: black;
-    fill: #ffffff;
+
+button.linkedin:hover {
+  color:#fff;
+  background-color: #0077b5;
 }
-button.youtube:hover {
-    background-color: #fd1d1d;
-    color: #ffffff;
+
+button.instagram:hover {
+  color:#fff;
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+.fa-heart {
+  color: #07008f;
 }
 
 .navbar-nav .nav-link {
