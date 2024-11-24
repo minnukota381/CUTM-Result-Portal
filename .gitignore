@@ -1,3 +1,28 @@
+# Ignore .env file with sensitive environment variables
 .env
+myenv/
 
+# Ignore virtual environment directory
+.myenv/
+.myenv/lib/
+
+# Ignore compiled Python files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore logs and temporary files
+*.log
+*.sqlite3
+*.db
+*.pid
+*.pyc
+__pycache__/
+
+# Ignore results folder
 /results/
+
+# Ignore IDE or editor-specific files
+.vscode/
+.idea/
+*.swp
