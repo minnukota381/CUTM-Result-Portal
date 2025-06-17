@@ -15,7 +15,7 @@ MarkupSafe==3.0.2
 numpy==2.2.6
 openpyxl==3.1.5
 packaging==25.0
-pandas==2.2.3
+pandas==2.3.0
 pipreqs==0.5.0
 pymongo==4.13.1
 python-dateutil==2.9.0.post0
