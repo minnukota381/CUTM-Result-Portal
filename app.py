@@ -15,8 +15,7 @@ ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
 
 MONGO_URI = os.getenv('MONGO_URI')
 
-client = MongoClient(MONGO_URI)
-
+client = None
 
 def convert_to_ist(gmt_time):
     ist_timezone = pytz.timezone('Asia/Kolkata')  
@@ -35,7 +34,8 @@ def convert_grade_to_integer(grade):
         'D': 5,
         'S': 0,
         'M': 0,
-        'F': 0
+        'F': 0,
+        'R': 0
     }
     return grade_mapping.get(grade, 0)  
 
@@ -47,10 +47,21 @@ def calculate_sgpa(result):
         credits_parts = [float(part) for part in row[7].split('+')]
         total_credits += sum(credits_parts)
         
-        if set(row[8]) <= {'O', 'E', 'A', 'B', 'C', 'D', 'S', 'M', 'F'}:
-            grade = convert_grade_to_integer(row[8])
+        # if set(row[8]) <= {'O', 'E', 'A', 'B', 'C', 'D', 'S', 'M', 'F'}:
+        #     grade = convert_grade_to_integer(row[8])
+        # else:
+        #     grade = float(row[8])
+        
+        grade_str = str(row[8]).strip().upper()
+
+        if grade_str in {'O', 'E', 'A', 'B', 'C', 'D', 'S', 'M', 'F', 'R'}:
+            grade = convert_grade_to_integer(grade_str)
         else:
-            grade = float(row[8])
+            try:
+                grade = float(grade_str)
+            except:
+                grade = 0
+
         
         weighted_grade = grade * sum(credits_parts)
         total_weighted_grades += weighted_grade
@@ -72,11 +83,16 @@ def calculate_cgpa(registration, name):
     for row in rows:
         credits_parts = [float(part) for part in row[0].split('+')]
         
-        if set(row[1]) <= {'O', 'E', 'A', 'B', 'C', 'D', 'S', 'M', 'F'}:
-            grade = convert_grade_to_integer(row[1])
+        grade_str = str(row[1]).strip().upper()
+
+        if grade_str in {'O', 'E', 'A', 'B', 'C', 'D', 'S', 'M', 'F', 'R'}:
+            grade = convert_grade_to_integer(grade_str)
         else:
-            grade = float(row[1])
-        
+            try:
+                grade = float(grade_str)
+            except:
+                grade = 0
+
         total_credits += sum(credits_parts)
         weighted_grade = grade * sum(credits_parts)
         total_weighted_grades += weighted_grade
@@ -201,17 +217,22 @@ def home():
             current_time_utc = datetime.utcnow()
             current_time_ist = convert_to_ist(current_time_utc)
 
-            client = MongoClient(MONGO_URI)
-            db = client.get_database('cutm')
-            collection = db.get_collection('userInput')
+            try:
+                if MONGO_URI:
+                    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
+                    db = client.get_database('cutm')
+                    collection = db.get_collection('userInput')
 
-            data = {
-                'registration': registration,
-                'semester': semester,
-                'time': current_time_ist
-            }
+                    data = {
+                        'registration': registration,
+                        'semester': semester,
+                        'time': current_time_ist
+                    }
 
-            collection.insert_one(data)
+                    collection.insert_one(data)
+            except Exception as mongo_error:
+                print("MongoDB insert failed:", mongo_error)
+
 
             return render_template('display.html', result=result, count=count, sgpa=sgpa, total_credits=total_credits, cgpa=cgpa, total_all_semester_credits=total_all_semester_credits, message=message, selected_semester=semester, semesters=semesters)
 
@@ -261,4 +282,4 @@ if __name__ == '__main__':
 
     conn.close()
 
-    app.run(port=5000, host="0.0.0.0", debug=True, use_reloader=False, threaded=False)
+    app.run(port=5000, host="0.0.0.0", debug=True)
