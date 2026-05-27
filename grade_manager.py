@@ -1,71 +1,59 @@
-import sqlite3
+# Simple Student Grade Manager
+# Author: Sumayo Enbeye
+# Description: A small program to manage and display student grades using lists.
 
-def fetch_subjects_and_grades(db_file, reg_no):
+def add_grade(grades):
+    """Add a new grade to the list."""
     try:
-        conn = sqlite3.connect(db_file)
-        cursor = conn.cursor()
-
-
-        cursor.execute("SELECT Subject_Name, Grade FROM CUTM WHERE Reg_No = ?", (reg_no,))
-        subjects = cursor.fetchall()
-
-        return subjects
-
-    except sqlite3.Error as e:
-        print(f"Error fetching data: {e}")
-        return []
-
-    finally:
-
-        if conn:
-            conn.close()
-
-def update_grade(db_file, reg_no, subject_name, new_grade):
-    try:
-
-        conn = sqlite3.connect(db_file)
-        cursor = conn.cursor()
-
-
-        cursor.execute("UPDATE CUTM SET Grade = ? WHERE Reg_No = ? AND Subject_Name = ?", (new_grade, reg_no, subject_name))
-
-
-        conn.commit()
-
-
-        if cursor.rowcount > 0:
-            print("Update successful!")
+        grade = float(input("Enter grade (0-100): "))
+        if 0 <= grade <= 100:
+            grades.append(grade)
+            print(f"Grade {grade} added successfully!")
         else:
-            print("No rows updated. Please check if the provided Registration Number and Subject Name exist.")
+            print("Grade must be between 0 and 100.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 
-    except sqlite3.Error as e:
-        print(f"Error updating data: {e}")
-
-    finally:
-
-        if conn:
-            conn.close()
-
-
-db_file = "database.db"
-
-
-reg_no = input("Enter the Registration Number: ")
-
-
-subjects_and_grades = fetch_subjects_and_grades(db_file, reg_no)
-
-if subjects_and_grades:
-    print("Subjects and Grades:")
-    for i, (subject, grade) in enumerate(subjects_and_grades, 1):
-        print(f"{i}. {subject}: {grade}")
-
-    subject_index = int(input("Enter the index of the subject you want to update: ")) - 1
-    if 0 <= subject_index < len(subjects_and_grades):
-        selected_subject, current_grade = subjects_and_grades[subject_index]
-        new_grade = input(f"Enter the new grade for {selected_subject}: ")
-        update_grade(db_file, reg_no, selected_subject, new_grade)
+def show_grades(grades):
+    """Display all grades."""
+    if not grades:
+        print("No grades yet.")
     else:
-        print("Invalid subject index entered.")
-else:
-    print("No subjects found for the provided Registration Number.")
+        print("\nAll grades:")
+        for i, g in enumerate(grades, 1):
+            print(f"{i}. {g}")
+
+def show_stats(grades):
+    """Show average, highest, and lowest grade."""
+    if not grades:
+        print("No grades to calculate.")
+        return
+    avg = sum(grades) / len(grades)
+    print(f"\nAverage grade: {avg:.2f}")
+    print(f"Highest grade: {max(grades)}")
+    print(f"Lowest grade: {min(grades)}")
+
+def main():
+    grades = []
+    while True:
+        print("\n--- Grade Manager ---")
+        print("1. Add grade")
+        print("2. Show all grades")
+        print("3. Show statistics")
+        print("4. Exit")
+        choice = input("Choose an option (1-4): ")
+        
+        if choice == '1':
+            add_grade(grades)
+        elif choice == '2':
+            show_grades(grades)
+        elif choice == '3':
+            show_stats(grades)
+        elif choice == '4':
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+if __name__ == "__main__":
+    main()
